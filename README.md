@@ -1,61 +1,33 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MINI ERP
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplicação criada para gerenciar produtos (e suas variações), estoque, pedidos e cupons.
 
-## About Laravel
+As tecnologias utilizadas foram: Laravel, PHP, JavaScript, Bootstrap e MySQL.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Observações:
+- Foi utilizada a arquitetura MVC
+- A ORM escolhida foi Eloquent, porém criei os prodviders prevendo caso um dia seja queira alterar a ORM (Doctrine, PDO e etc.)
+- Para as lógicas de banco de dados foram criados arquivos de Repository, seguindo a boa prática. Também foram utilizadas as transações (transactions) para garantir a integridade dos dados.
+- As tabelas foram criadas com associações.
+- Para adicionar todas tabelas é só executar php artisan migrate.
+- O carrinho de compras é gerenciado em sessão.
+- Caso o subtotal do pedido tenha entre R$52,00 e R$166,59, o frete do pedido será de R$15,00. Caso o subtotal seja maior que R$200,00, frete grátis. Para outros valores, o frete custará R$20,00.
+- O campo de CEP possui validação pela API do ViaCEP
+- Ao concluir um pedido um e-mail é enviado ao e-mail cadastrado (porém as configurações de MAIL no arquivo .env devem ser configuradas para o envio)
+- Foi criado um webhook para alterar o status dos pedidos.
+    - URL: {URL}/api/webhook/order-status
+    - Body: {"id": 7, "status": "Cancelado"}
+    - Headers: Content-Type: application/json
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# APLICAÇÃO NA PRÁTICA
+Fiz alguns vídeos pra explicar o funcionamento da aplicação!
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Produtos: [link do vídeo](https://drive.google.com/file/d/1TNPB2F9MAnaBok0MRysWTZ8zSF_qFxl_/view?usp=drive_link)
 
-## Learning Laravel
+### Cupons: [link do vídeo](https://drive.google.com/file/d/19chZtlDmR50ZPGu2mi5IialqvIZy-YLn/view?usp=drive_link)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Pedidos: [link do vídeo](https://drive.google.com/file/d/1AGEmibFGjGWl6GpAwuAwE6aXoGQoYF8K/view?usp=drive_link)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Pedidos e Estoque: [link do vídeo](https://drive.google.com/file/d/1_1EexPUkBP2T5-z4l6LvkqsDwmE1zWBv/view?usp=drive_link)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Webhook: [link do vídeo](https://drive.google.com/file/d/17klTgs1858spAbu-03UsOjH4rWmW7cre/view?usp=drive_link)
