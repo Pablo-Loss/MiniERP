@@ -1,0 +1,3 @@
+.disabled, .disabled:active {
+    background-color: var(--bs-secondary-bg) !important;
+}
